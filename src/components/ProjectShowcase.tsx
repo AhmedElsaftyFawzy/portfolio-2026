@@ -69,7 +69,15 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ onSelectProjec
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div
+          className={`grid grid-cols-1 ${
+            filteredProjects.length === 1
+              ? 'max-w-xl mx-auto'
+              : filteredProjects.length === 2
+              ? 'md:grid-cols-2 max-w-5xl mx-auto'
+              : 'md:grid-cols-2 lg:grid-cols-3'
+          } gap-6 lg:gap-8`}
+        >
           {filteredProjects.map((project) => (
             <div
               key={project.id}

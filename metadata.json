@@ -2,5 +2,7 @@
   "name": "Ahmed Elsafty Fawzy Portfolio",
   "description": "Unique Cyber-Noir portfolio for Front-End Developer Ahmed Elsafty Fawzy, featuring motion graphics, dark mode, interactive project inspector, and verified certificates.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
