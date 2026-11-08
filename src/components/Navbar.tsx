@@ -14,6 +14,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, onToggleTheme, onOpenPdf
   const navLinks = [
     { label: 'Journey', href: '#journey' },
     { label: 'Projects', href: '#projects' },
+    { label: 'Course Labs', href: '#course-projects' },
     { label: 'Credentials', href: '#credentials' },
     { label: 'Skills', href: '#skills' },
     { label: 'Contact', href: '#contact' },

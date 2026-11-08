@@ -10,13 +10,15 @@ import { Hero } from './components/Hero';
 import { JourneyTimeline } from './components/JourneyTimeline';
 import { ProjectShowcase } from './components/ProjectShowcase';
 import { ProjectModal } from './components/ProjectModal';
+import { CourseProjects } from './components/CourseProjects';
+import { CourseProjectModal } from './components/CourseProjectModal';
 import { CertificateShowcase } from './components/CertificateShowcase';
 import { CertificateModal } from './components/CertificateModal';
 import { SkillsMatrix } from './components/SkillsMatrix';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { PERSONAL_INFO, CERTIFICATES } from './data/portfolioData';
-import { Project, Certificate } from './types';
+import { Project, Certificate, CourseProject } from './types';
 
 export default function App() {
   // Theme state: defaults to dark for the requested Cyber-Noir aesthetic
@@ -31,6 +33,7 @@ export default function App() {
 
   // Modal inspection states
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [activeCourseProject, setActiveCourseProject] = useState<CourseProject | null>(null);
   const [activeCertificate, setActiveCertificate] = useState<Certificate | null>(null);
 
   // Sync theme with <html> class and localStorage
@@ -101,6 +104,8 @@ export default function App() {
 
           <ProjectShowcase onSelectProject={(project) => setActiveProject(project)} />
 
+          <CourseProjects onInspectCourseProject={(project) => setActiveCourseProject(project)} />
+
           <CertificateShowcase onSelectCertificate={(cert) => setActiveCertificate(cert)} />
 
           <SkillsMatrix />
@@ -117,6 +122,12 @@ export default function App() {
       <ProjectModal
         project={activeProject}
         onClose={() => setActiveProject(null)}
+      />
+
+      {/* Interactive Course Project Preview Modal */}
+      <CourseProjectModal
+        project={activeCourseProject}
+        onClose={() => setActiveCourseProject(null)}
       />
 
       {/* Interactive Certificate & PDF Inspector Modal */}

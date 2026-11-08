@@ -25,7 +25,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ onSelectProjec
               Production Portfolio
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-              Selected Works & Case Studies
+              Selected Works
             </h2>
             <p className="mt-2 text-base text-slate-600 dark:text-slate-300 max-w-2xl">
               Real-world web applications built with scalable React, Next.js, and TypeScript architectures.

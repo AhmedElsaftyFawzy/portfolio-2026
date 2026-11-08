@@ -45,3 +45,14 @@ export interface SkillItem {
   level: string;
   highlight?: boolean;
 }
+
+export interface CourseProject {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+  url: string;
+  tech: string[];
+  category: 'html-css' | 'javascript' | 'advanced';
+}
+

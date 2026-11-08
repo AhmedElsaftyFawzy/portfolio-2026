@@ -176,14 +176,14 @@ export const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ onOpenPdf }) =
             {selectedMilestone.id === 'cs50-foundation' && (
               <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
                 <button
-                  onClick={() => onOpenPdf('/assets/aistudio/CS50x_1b34f457.pdf', 'Harvard CS50x Certificate')}
+                  onClick={() => onOpenPdf('/assets/data/CS50x_1b34f457.pdf', 'Harvard CS50x Certificate')}
                   className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline cursor-pointer"
                 >
                   View CS50x Certificate &rarr;
                 </button>
                 <span className="text-slate-400">·</span>
                 <button
-                  onClick={() => onOpenPdf('/assets/aistudio/CS50P_9812909a.pdf', 'Harvard CS50P Certificate')}
+                  onClick={() => onOpenPdf('/assets/data/CS50P_9812909a.pdf', 'Harvard CS50P Certificate')}
                   className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline cursor-pointer"
                 >
                   View CS50P Certificate &rarr;
@@ -194,7 +194,7 @@ export const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ onOpenPdf }) =
               <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <button
                   onClick={() =>
-                    onOpenPdf('/assets/aistudio/Ahmed_Elsafty_Fawzy_2_0bdbc17d.pdf', 'Route IT Frontend Diploma')
+                    onOpenPdf('/assets/data/Ahmed_Elsafty_Fawzy_2_0bdbc17d.pdf', 'Route IT Frontend Diploma')
                   }
                   className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer"
                 >

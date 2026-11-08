@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ExternalLink, Download, X, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, Download, X, ShieldCheck, FileText } from 'lucide-react';
 import { Certificate } from '../types';
 
 interface CertificateModalProps {
@@ -66,7 +66,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
             )}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             {certificate.verifyUrl && (
               <a
                 href={certificate.verifyUrl}
@@ -81,6 +81,16 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
 
             <a
               href={certificate.pdfPath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 font-semibold text-cyan-700 dark:text-cyan-300 bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800 rounded-md hover:bg-cyan-100 dark:hover:bg-cyan-900 transition-colors"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Open in New Tab</span>
+            </a>
+
+            <a
+              href={certificate.pdfPath}
               download
               className="inline-flex items-center gap-1.5 px-3 py-1.5 font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
             >
@@ -90,20 +100,38 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
           </div>
         </div>
 
-        {/* Embedded PDF Viewer Frame */}
-        <div className="flex-1 min-h-[350px] sm:min-h-[480px] w-full rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-950">
-          <iframe
-            src={`${certificate.pdfPath}#toolbar=0&navpanes=0`}
-            title={certificate.title}
-            className="w-full h-full border-none"
-          />
+        {/* Embedded PDF Viewer Frame with Object/Iframe Resilient Fallback */}
+        <div className="flex-1 min-h-[360px] sm:min-h-[500px] w-full rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-950 relative">
+          <object
+            data={certificate.pdfPath}
+            type="application/pdf"
+            className="w-full h-full min-h-[360px] sm:min-h-[500px]"
+          >
+            <iframe
+              src={certificate.pdfPath}
+              title={certificate.title}
+              className="w-full h-full min-h-[360px] sm:min-h-[500px] border-none"
+            >
+              <div className="p-8 text-center flex flex-col items-center justify-center h-full space-y-4">
+                <FileText className="w-12 h-12 text-slate-400" />
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  Your browser does not support embedded PDF previews.
+                </p>
+                <a
+                  href={certificate.pdfPath}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 text-xs font-semibold text-white bg-cyan-600 rounded-lg"
+                >
+                  Click Here to Open PDF Document
+                </a>
+              </div>
+            </iframe>
+          </object>
         </div>
 
         {/* Skills Covered */}
-        <div className="pt-2">
-          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1.5">
-            Core Competencies Validated
-          </div>
+        <div className="pt-2 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-1.5 text-xs font-mono">
             {certificate.skills.map((skill) => (
               <span
@@ -114,6 +142,13 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
               </span>
             ))}
           </div>
+
+          <button
+            onClick={onClose}
+            className="px-4 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer transition-colors"
+          >
+            Close Viewer
+          </button>
         </div>
       </div>
     </div>
